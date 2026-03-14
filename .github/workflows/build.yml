@@ -35,15 +35,15 @@ jobs:
       - name: Checkout Push to Registry action
         uses: actions/checkout@v6
 
-      - name: Maximize build space
-        uses: flatpaks/runner-cleanup@3
+      #- name: Maximize build space
+      #  uses: flatpaks/runner-cleanup@3
 
       - name: Generate tags
         id: generate-tags
         shell: bash
         run: |
           # Generate a timestamp for creating an image version history
-          TIMESTAMP="$(date +%Y%m%d)
+          TIMESTAMP="$(date +%Y%m%d)latest"
           COMMIT_TAGS=()
           BUILD_TAGS=()
 
@@ -57,7 +57,7 @@ jobs:
               BUILD_TAGS+=("${TAG}-${TIMESTAMP}")
           done
 
-          BUILD_TAGS+=("${TIMESTAMP}latest")
+          BUILD_TAGS+=("${TIMESTAMP}")
           BUILD_TAGS+=("latest")
 
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
