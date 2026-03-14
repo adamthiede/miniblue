@@ -53,6 +53,7 @@ jobs:
       - name: docker buildx
         uses: docker/setup-buildx-action@v4
       - name: Build and push image
+        id: buildpush
         uses: docker/build-push-action@v4
         with:
           context: .
@@ -74,8 +75,8 @@ jobs:
       - name: Sign container image
         if: github.event_name != 'pull_request'
         run: |
-          cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ env.IMAGE_NAME }}:latest,${{ env.IMAGE_NAME }}:${{ steps.fver.outputs.fver }}
+          cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ env.IMAGE_NAME }}@${TAGS}
         env:
-          TAGS: latest,${{ steps.fver.outputs.fver }}
+          TAGS: ${{ steps.buildpush.outputs.digest }}
           COSIGN_EXPERIMENTAL: false
           COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }}
