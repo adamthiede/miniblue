@@ -22,7 +22,7 @@ RUN	rpm-ostree install "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free
 		--install ffmpeg && \
 	rpm-ostree install \
 		cinnamon-desktop cinnamon-session cinnamon-settings-daemon cinnamon-menus cinnamon-control-center nemo papers \
-		gdm \
+		sddm \
 		xorg-x11-drv-intel xorg-x11-drv-amdgpu xorg-x11-drv-libinput xorg-x11-drv-nouveau xorg-x11-drv-qxl xorg-x11-drv-vmware xorg-x11-drv-evdev \
 		libva-intel-media-driver libva-utils \
 		libdvdcss \
@@ -51,7 +51,7 @@ COPY cosign.pub /etc/pki/containers/cosign.pub
 RUN mkdir -p /var/lib/alternatives && \
     echo -e "[Daemon]\nAutomaticUpdatePolicy=stage\n" > /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
-    systemctl enable gdm && \
+    systemctl enable sddm && \
     systemctl disable NetworkManager-wait-online.service && \
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo && \
     ln -s /etc/systemd/user/ostree-notify.timer /etc/systemd/user/default.target.wants/ && \
