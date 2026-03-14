@@ -38,8 +38,8 @@ RUN	rpm-ostree install \
 		fastfetch \
 		libreoffice-writer libreoffice-calc libreoffice-impress \
 		vlc \
-		papers \
 		gnome-terminal \
+		xed \
 		&& \
 	ostree container commit
 
@@ -52,6 +52,7 @@ COPY update-flatpak/update-flatpak.service /etc/systemd/system/update-flatpak.se
 COPY policy.json /etc/containers/policy.json
 COPY cosign.pub /etc/pki/containers/cosign.pub
 COPY flatpak-repo-config /var/lib/flatpak/repo/config
+COPY desktop-readme.txt /etc/skel/Desktop/README.txt
 
 RUN mkdir -p /var/lib/alternatives && \
     echo -e "[Daemon]\nAutomaticUpdatePolicy=stage\n" > /etc/rpm-ostreed.conf && \
