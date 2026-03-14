@@ -5,7 +5,7 @@ Wants=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/bash -c "/usr/bin/flatpak update --assumeyes --noninteractive --system && /usr/bin/flatpak remove --unused --assumeyes --noninteractive --system"
+ExecStart=/usr/bin/bash -c "/usr/bin/flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo && /usr/bin/flatpak update --assumeyes --noninteractive --system && /usr/bin/flatpak remove --unused --assumeyes --noninteractive --system"
 
 [Install]
 WantedBy=multi-user.target
