@@ -7,7 +7,7 @@ COPY dnf.conf /etc/dnf/dnf.conf
 # rpmfusion, override removes
 RUN	dnf install -y "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm" && \
 	dnf install -y rpmfusion-free-release-tainted && \
-	dnf install --allowerasing vim-default-editor fedora-release-identity-cinnamon ffmpeg && \
+	dnf install -y --allowerasing vim-default-editor fedora-release-identity-cinnamon ffmpeg && \
 	dnf remove -y \
 		virtualbox-guest-additions \
 		default-fonts-core-emoji google-noto-color-emoji-fonts google-noto-emoji-fonts \
