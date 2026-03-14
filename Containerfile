@@ -39,6 +39,7 @@ RUN	rpm-ostree install \
 		libreoffice-writer libreoffice-calc libreoffice-impress \
 		vlc \
 		papers \
+		gnome-terminal \
 		&& \
 	ostree container commit
 
