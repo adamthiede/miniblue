@@ -35,8 +35,9 @@ COPY ostree-notify/ostree-notify.service /etc/systemd/user/ostree-notify.service
 COPY update-flatpak/update-flatpak.timer /etc/systemd/system/update-flatpak.timer
 COPY update-flatpak/update-flatpak.service /etc/systemd/system/update-flatpak.service
 
-COPY policy.json /etc/containers/policy.json
-COPY cosign.pub /etc/pki/containers/cosign.pub
+# doesn't work yet
+# COPY policy.json /etc/containers/policy.json
+# COPY cosign.pub /etc/pki/containers/cosign.pub
 COPY desktop-readme.txt /etc/skel/Desktop/README.txt
 
 RUN mkdir -p /var/lib/alternatives && \
