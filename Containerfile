@@ -1,5 +1,5 @@
-ARG FEDORA
-ARG FROM=43
+ARG FEDORA=43
+ARG FROM
 FROM quay.io/fedora-ostree-desktops/base-atomic:${FEDORA}
 
 # rpmfusion, override removes
