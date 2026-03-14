@@ -1,5 +1,5 @@
 ARG FEDORA
-ARG FROM
+ARG FROM=43
 FROM quay.io/fedora-ostree-desktops/base-atomic:${FEDORA}
 
 RUN	rpm-ostree install "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" && \
