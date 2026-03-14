@@ -11,7 +11,7 @@ RUN	dnf install -y "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-rel
 	dnf install -y \
 		xorg-x11-drv-intel xorg-x11-drv-amdgpu xorg-x11-drv-libinput xorg-x11-drv-nouveau xorg-x11-drv-qxl xorg-x11-drv-vmware xorg-x11-drv-evdev \
 		libva-intel-media-driver libva-utils \
-		cinnamon cinnamon-desktop cinnamon-session cinnamon-settings-daemon cinnamon-menus cinnamon-control-center cinnamon-themes mint-themes nemo \
+		cinnamon cinnamon-desktop cinnamon-session cinnamon-settings-daemon cinnamon-menus cinnamon-control-center cinnamon-themes mint-themes mint-y-icons nemo \
 		sddm \
 		libdvdcss \
 		libva-intel-driver \
