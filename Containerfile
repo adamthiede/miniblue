@@ -2,6 +2,7 @@ ARG FEDORA
 ARG FROM=43
 FROM quay.io/fedora-ostree-desktops/base-atomic:${FEDORA}
 
+# rpmfusion, override removes
 RUN	rpm-ostree install "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" && \
 	rpm-ostree install "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm" && \
 	rpm-ostree install rpmfusion-free-release-tainted && \
@@ -17,27 +18,27 @@ RUN	rpm-ostree install "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free
 		libswscale-free \
 		virtualbox-guest-additions \
 		nano nano-default-editor \
+		fedora-release-identity-basic \
 		default-fonts-core-emoji google-noto-color-emoji-fonts google-noto-emoji-fonts \
 		--install vim-default-editor \
-		--install ffmpeg && \
-	rpm-ostree override remove \
-		fedora-release-identity-basic \
-		--install fedora-release-identity-cinnamon && \
-	rpm-ostree install \
-		cinnamon cinnamon-desktop cinnamon-session cinnamon-settings-daemon cinnamon-menus cinnamon-control-center cinnamon-themes nemo papers sddm \
+		--install fedora-release-identity-cinnamon \
+		--install ffmpeg \
+		&& \
+	ostree container commit
+
+# desktop environment, dependencies, and user apps
+RUN	rpm-ostree install \
+		cinnamon cinnamon-desktop cinnamon-session cinnamon-settings-daemon cinnamon-menus cinnamon-control-center cinnamon-themes nemo sddm \
 		xorg-x11-drv-intel xorg-x11-drv-amdgpu xorg-x11-drv-libinput xorg-x11-drv-nouveau xorg-x11-drv-qxl xorg-x11-drv-vmware xorg-x11-drv-evdev \
 		libva-intel-media-driver libva-utils \
 		libdvdcss \
 		libva-intel-driver \
 		intel-media-driver \
-		tailscale \
-		NetworkManager-tui \
-		gvfs-nfs \
-		syncthing \
 		gnome-themes-extra \
-		distrobox \
 		fastfetch \
-		htop \
+		libreoffice-writer libreoffice-calc libreoffice-impress \
+		vlc \
+		papers \
 		&& \
 	ostree container commit
 
@@ -49,6 +50,7 @@ COPY update-flatpak/update-flatpak.service /etc/systemd/system/update-flatpak.se
 
 COPY policy.json /etc/containers/policy.json
 COPY cosign.pub /etc/pki/containers/cosign.pub
+COPY flatpak-repo-config /var/lib/flatpak/repo/config
 
 RUN mkdir -p /var/lib/alternatives && \
     echo -e "[Daemon]\nAutomaticUpdatePolicy=stage\n" > /etc/rpm-ostreed.conf && \
