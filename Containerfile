@@ -16,13 +16,15 @@ RUN	rpm-ostree install "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free
 		libswresample-free \
 		libswscale-free \
 		virtualbox-guest-additions \
-		firefox \
-		firefox-langpacks \
 		nano nano-default-editor \
 		default-fonts-core-emoji google-noto-color-emoji-fonts google-noto-emoji-fonts \
 		--install vim-default-editor \
 		--install ffmpeg && \
 	rpm-ostree install \
+		cinnamon-desktop cinnamon-session cinnamon-settings-daemon cinnamon-menus cinnamon-control-center nemo papers \
+		lightdm-gtk \
+		xorg-x11-drv-intel xorg-x11-drv-amdgpu xorg-x11-drv-libinput xorg-x11-drv-nouveau \
+		libva-intel-media-driver libva-utils \
 		libdvdcss \
 		libva-intel-driver \
 		intel-media-driver \
