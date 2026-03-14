@@ -23,7 +23,7 @@ RUN	rpm-ostree install "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free
 	rpm-ostree install \
 		cinnamon-desktop cinnamon-session cinnamon-settings-daemon cinnamon-menus cinnamon-control-center nemo papers \
 		lightdm slick-greeter \
-		xorg-x11-drv-intel xorg-x11-drv-amdgpu xorg-x11-drv-libinput xorg-x11-drv-nouveau xorg-x11-drv-qxl \
+		xorg-x11-drv-intel xorg-x11-drv-amdgpu xorg-x11-drv-libinput xorg-x11-drv-nouveau xorg-x11-drv-qxl xorg-x11-drv-vmware xorg-x11-drv-evdev \
 		libva-intel-media-driver libva-utils \
 		libdvdcss \
 		libva-intel-driver \
