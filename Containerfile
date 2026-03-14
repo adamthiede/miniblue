@@ -45,6 +45,9 @@ COPY ostree-notify/ostree-notify.service /etc/systemd/user/ostree-notify.service
 COPY update-flatpak/update-flatpak.timer /etc/systemd/system/update-flatpak.timer
 COPY update-flatpak/update-flatpak.service /etc/systemd/system/update-flatpak.service
 
+COPY policy.json /etc/containers/policy.json
+COPY cosign.pubn /etc/pki/containers/cosign.pub
+
 RUN mkdir -p /var/lib/alternatives && \
     echo -e "[Daemon]\nAutomaticUpdatePolicy=stage\n" > /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
