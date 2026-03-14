@@ -5,31 +5,14 @@ FROM quay.io/fedora-ostree-desktops/base-atomic:${FEDORA}
 COPY dnf.conf /etc/dnf/dnf.conf
 
 # rpmfusion, override removes
-RUN	rpm-ostree install "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" && \
-	rpm-ostree install "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm" && \
-	rpm-ostree install rpmfusion-free-release-tainted && \
-	rpm-ostree override remove \
-		ffmpeg-free \
-		libavcodec-free \
-		libavdevice-free \
-		libavfilter-free \
-		libavformat-free \
-		libavutil-free \
-		libpostproc-free \
-		libswresample-free \
-		libswscale-free \
+RUN	dnf install -y "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm" && \
+	dnf install -y rpmfusion-free-release-tainted && \
+	dnf install -y --allowerasing vim-default-editor fedora-release-identity-cinnamon ffmpeg && \
+	dnf remove -y \
 		virtualbox-guest-additions \
-		nano nano-default-editor \
-		fedora-release-identity-basic \
 		default-fonts-core-emoji google-noto-color-emoji-fonts google-noto-emoji-fonts \
-		--install vim-default-editor \
-		--install fedora-release-identity-cinnamon \
-		--install ffmpeg \
 		&& \
-	ostree container commit
-
-# desktop environment, dependencies, and user apps
-RUN	rpm-ostree install \
+	dnf install -y \
 		cinnamon cinnamon-desktop cinnamon-session cinnamon-settings-daemon cinnamon-menus cinnamon-control-center cinnamon-themes nemo sddm \
 		xorg-x11-drv-intel xorg-x11-drv-amdgpu xorg-x11-drv-libinput xorg-x11-drv-nouveau xorg-x11-drv-qxl xorg-x11-drv-vmware xorg-x11-drv-evdev \
 		libva-intel-media-driver libva-utils \
