@@ -8,8 +8,6 @@ sudo ostree admin pin 0
 
 2. Rebase to the image and reboot
 
-(Pick "silverblue" or "kinoite" tags)
-
 ```
 sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/adamthiede/miniblue:latest
 sudo reboot
@@ -21,8 +19,4 @@ sudo reboot
 sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/adamthiede/miniblue:latest
 sudo reboot
 ```
-
-# What is this?
-
-This is a lightly customized Fedora Silverblue and/or Kinoite, using the `quay.io/fedora-ostree-desktops/silverblue` image. Mainly it just pulls in vim, rpmfusion repos, and the drivers with the patent encumbered codecs for hardware decoding.
 
