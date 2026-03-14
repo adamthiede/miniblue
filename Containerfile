@@ -8,14 +8,11 @@ COPY dnf.conf /etc/dnf/dnf.conf
 RUN	dnf install -y "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm" && \
 	dnf install -y rpmfusion-free-release-tainted && \
 	dnf install -y --allowerasing vim-default-editor fedora-release-identity-cinnamon ffmpeg && \
-	dnf remove -y \
-		virtualbox-guest-additions \
-		default-fonts-core-emoji google-noto-color-emoji-fonts google-noto-emoji-fonts \
-		&& \
 	dnf install -y \
-		cinnamon cinnamon-desktop cinnamon-session cinnamon-settings-daemon cinnamon-menus cinnamon-control-center cinnamon-themes nemo sddm \
 		xorg-x11-drv-intel xorg-x11-drv-amdgpu xorg-x11-drv-libinput xorg-x11-drv-nouveau xorg-x11-drv-qxl xorg-x11-drv-vmware xorg-x11-drv-evdev \
 		libva-intel-media-driver libva-utils \
+		cinnamon cinnamon-desktop cinnamon-session cinnamon-settings-daemon cinnamon-menus cinnamon-control-center cinnamon-themes mint-themes nemo \
+		sddm \
 		libdvdcss \
 		libva-intel-driver \
 		intel-media-driver \
@@ -25,6 +22,10 @@ RUN	dnf install -y "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-rel
 		vlc \
 		gnome-terminal \
 		xed \
+		&& \
+	dnf remove -y \
+		virtualbox-guest-additions \
+		default-fonts-core-emoji google-noto-color-emoji-fonts google-noto-emoji-fonts \
 		&& \
 	ostree container commit
 
