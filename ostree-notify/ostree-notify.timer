@@ -1,0 +1,9 @@
+[Unit]
+Description=rpm-ostree notification of staged deployment
+
+[Timer]
+OnCalendar=00/2:30
+Persistent=true
+
+[Install]
+WantedBy=timers.target
