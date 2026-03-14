@@ -11,14 +11,14 @@ sudo ostree admin pin 0
 (Pick "silverblue" or "kinoite" tags)
 
 ```
-sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/adamthiede/bluefin:silverblue
+sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/adamthiede/miniblue:latest
 sudo reboot
 ```
 
 3. Rebase to the image again, after it's trusted.
 
 ```
-sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/adamthiede/bluefin:silverblue
+sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/adamthiede/miniblue:latest
 sudo reboot
 ```
 
