@@ -22,7 +22,7 @@ RUN	rpm-ostree install "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free
 		--install ffmpeg && \
 	rpm-ostree install \
 		cinnamon-desktop cinnamon-session cinnamon-settings-daemon cinnamon-menus cinnamon-control-center nemo papers \
-		lightdm-gtk slick-greeter \
+		lightdm slick-greeter \
 		xorg-x11-drv-intel xorg-x11-drv-amdgpu xorg-x11-drv-libinput xorg-x11-drv-nouveau xorg-x11-drv-qxl \
 		libva-intel-media-driver libva-utils \
 		libdvdcss \
