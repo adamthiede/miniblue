@@ -20,6 +20,9 @@ RUN	rpm-ostree install "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free
 		default-fonts-core-emoji google-noto-color-emoji-fonts google-noto-emoji-fonts \
 		--install vim-default-editor \
 		--install ffmpeg && \
+	rpm-ostree override remove \
+		fedora-release-identity-basic \
+		--install fedora-release-identity-cinnamon && \
 	rpm-ostree install \
 		cinnamon-desktop cinnamon-session cinnamon-settings-daemon cinnamon-menus cinnamon-control-center nemo papers \
 		sddm-x11 \
