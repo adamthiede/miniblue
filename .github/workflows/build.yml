@@ -58,6 +58,7 @@ jobs:
           done
 
           BUILD_TAGS+=("${TIMESTAMP}")
+	  BUILD_TAGS+=("miniblue")
 
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
               echo "Generated the following commit tags: "
