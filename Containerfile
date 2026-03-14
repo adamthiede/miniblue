@@ -53,7 +53,6 @@ COPY cosign.pub /etc/pki/containers/cosign.pub
 RUN mkdir -p /var/lib/alternatives && \
     echo -e "[Daemon]\nAutomaticUpdatePolicy=stage\n" > /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
-    systemctl enable sddm && \
     systemctl disable NetworkManager-wait-online.service && \
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo && \
     ln -s /etc/systemd/user/ostree-notify.timer /etc/systemd/user/default.target.wants/ && \
