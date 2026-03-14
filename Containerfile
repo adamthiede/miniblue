@@ -46,7 +46,7 @@ COPY update-flatpak/update-flatpak.timer /etc/systemd/system/update-flatpak.time
 COPY update-flatpak/update-flatpak.service /etc/systemd/system/update-flatpak.service
 
 COPY policy.json /etc/containers/policy.json
-COPY cosign.pubn /etc/pki/containers/cosign.pub
+COPY cosign.pub /etc/pki/containers/cosign.pub
 
 RUN mkdir -p /var/lib/alternatives && \
     echo -e "[Daemon]\nAutomaticUpdatePolicy=stage\n" > /etc/rpm-ostreed.conf && \
