@@ -47,4 +47,5 @@ RUN mkdir -p /var/lib/alternatives && \
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo && \
     ln -s /etc/systemd/user/ostree-notify.timer /etc/systemd/user/default.target.wants/ && \
 	systemctl enable update-flatpak.timer && \
+    rm -f /usr/share/wayland-sessions/cinnamon.desktop && \
     ostree container commit
