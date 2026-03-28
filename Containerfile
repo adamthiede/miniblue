@@ -37,7 +37,7 @@ COPY update-flatpak/update-flatpak.service /etc/systemd/system/update-flatpak.se
 
 # doesn't work yet
 # COPY policy.json /etc/containers/policy.json
-# COPY cosign.pub /etc/pki/containers/cosign.pub
+COPY cosign.pub /etc/pki/containers/miniblue.pub
 COPY desktop-readme.txt /etc/skel/Desktop/README.txt
 
 RUN mkdir -p /var/lib/alternatives && \

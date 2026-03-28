@@ -38,10 +38,10 @@
                     }
                 }
             ],
-            "ghcr.io/adamthiede": [
+            "ghcr.io/adamthiede/miniblue": [
                 {
                     "type": "sigstoreSigned",
-                    "keyPath": "/etc/pki/containers/cosign.pub",
+                    "keyPath": "/etc/pki/containers/miniblue.pub",
                     "signedIdentity": {
                         "type": "matchRepository"
                     }
