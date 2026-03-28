@@ -79,3 +79,7 @@ jobs:
           TAGS: ${{ steps.buildpush.outputs.digest }}
           COSIGN_EXPERIMENTAL: false
           COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }}
+      - name: Validate signing
+        if: github.event_name != 'pull_request'
+        run: |
+          cosign verify --key ./cosign.pub ${{ env.IMAGE_NAME }}:latest
