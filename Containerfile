@@ -36,7 +36,7 @@ COPY update-flatpak/update-flatpak.timer /etc/systemd/system/update-flatpak.time
 COPY update-flatpak/update-flatpak.service /etc/systemd/system/update-flatpak.service
 
 # doesn't work yet
-# COPY policy.json /etc/containers/policy.json
+COPY policy.json /etc/containers/policy.json
 COPY cosign.pub /etc/pki/containers/miniblue.pub
 COPY desktop-readme.txt /etc/skel/Desktop/README.txt
 
