@@ -16,7 +16,6 @@ RUN	dnf install -y "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-rel
 		libdvdcss \
 		libva-intel-driver \
 		intel-media-driver \
-		gnome-themes-extra \
 		fastfetch \
 		libreoffice-writer libreoffice-calc libreoffice-impress \
 		vlc \
